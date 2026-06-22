@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #1a1a1a;
+  background-color: #fff;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+@theme {
+  --font-sans: 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-body: 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace';
+  --spacing-custom: 10px;
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+}
+@keyframes loadingPulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+
+.pb-0 {
+  padding-bottom: 0;
+}
+
+.btnPhone-white {
+  background: transparent;
+  padding: 13.5px 44px;
+  border: 1px solid #0052a3;
+  border-radius: 30px;
+  letter-spacing: 0.03rem;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0052a3;
+  box-shadow: 0 3px 6px #e3f2fd;
+  transition: 0.5s;
+}
+.btnPhone-white:hover {
+  background: #0052a3;
+  border-color: #0052a3;
+  color: #fff;
+}
+
+.btnPhone-blue {
+  background: linear-gradient(120deg, #60a4f4, #2a73dd);
+  padding: 15.5px 46px;
+  border: none;
+  border-radius: 30px;
+  letter-spacing: 0.03rem;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.5s;
+}
+.btnPhone-blue:hover {
+  opacity: 0.75;
+}
+
+.btnPhone-shadow {
+  background: #f5f9fe;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 3px;
+  letter-spacing: 0.03rem;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #0052a3;
+  box-shadow: 2px 2px 4px #e2ebfc, -2px -2px 4px #fff;
+  transition: 0.5s;
+}
+.btnPhone-shadow:hover {
+  box-shadow: inset 1px 1px 3px #e2ebfc, inset -2px -2px 5px #fff;
+}
+
+.btn__nnt-store {
+  padding: 12px 40px;
+  width: max-content;
+  border-radius: 40px;
+  background: #000;
+  color: #fff;
+}
+
+.cardPhone {
+  box-shadow: 6px 6px 12px #e2ebfc, -6px -6px 12px #fff;
+  background-color: #f5f9fe;
+  border: none;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+.cardPhone img {
+  box-shadow: 6px 6px 12px #e2ebfc, -6px -6px 12px #fff;
+  border-radius: 30px;
+}
+.cardPhone .cardPhone__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0066cc;
+}
+.cardPhone .cardPhone__text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #0066cc;
+}
+.cardPhone .cardPhone__rating {
+  color: #ffc107;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+@keyframes marquee-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-50% - 0.5rem));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track-x,
+  .marquee-track-y {
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+  }
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2048px);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee :hover {
+  animation-play-state: paused;
+}
+
+.nnt__category-carousel .swiper-button {
+  background-color: #f5f9fe;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  color: #1a1a1a;
+}
+.nnt__category-carousel .swiper-button svg {
+  width: 15px;
+  height: 15px;
+  color: #101828;
+}
+
+.title__product {
+  transition: all 0.4s;
+}
+.title__product:hover {
+  color: #0066cc;
+}
+
+.sub__title-product {
+  cursor: pointer;
+}
+
+.function__product-item ul li a {
+  transition: all 0.4s;
+  cursor: pointer;
+}
+.function__product-item ul li a:hover {
+  background-color: #0066cc;
+  color: #fff;
+}
+
+footer .social-button li a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  line-height: 50px;
+  border: 1px solid #ddd;
+  text-align: center;
+  transition: all 0.4s;
+}
+footer .social-button li a:hover {
+  background-color: #353536;
+  border-color: #353536;
+  color: #fff;
+}/*# sourceMappingURL=main.css.map */

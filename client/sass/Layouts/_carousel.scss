@@ -1,0 +1,35 @@
+@import '../Helpers/variables';
+@import '../Helpers/mixin';
+
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-256px * 8));
+    }
+}
+
+.animate-marquee {
+    animation: marquee 40s linear infinite;
+    :hover {
+        animation-play-state: paused;
+    }
+}
+
+.nnt__category-carousel {
+    .swiper-button {
+        background-color: $color-white-1;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        color: $color-dark-1;
+
+        svg {
+            width: 15px;
+            height: 15px;
+            color: $color-primary;
+        }
+    }
+}

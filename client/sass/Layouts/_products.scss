@@ -1,0 +1,36 @@
+@import '../Helpers/variables';
+@import '../Helpers/mixin';
+
+.title__product {
+    transition: all 0.4s;
+
+    &:hover {
+        color: $color-blue-1;
+    }
+}
+
+.sub__title-product {
+    cursor: pointer;
+}
+
+.function__product-item {
+	ul {
+		li {
+			a {
+				transition: all 0.4s;
+				cursor: pointer;
+				&:hover {
+					background-color: $color-blue-1;
+                    color: $color-white-3;
+				}
+			}
+		}
+    }
+}
+
+//responsive
+@include responsive("large-down") {}
+
+@include responsive("medium-down") {}
+
+@include responsive("small-down") {}
