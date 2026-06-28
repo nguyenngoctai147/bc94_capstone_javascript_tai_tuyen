@@ -106,10 +106,7 @@
     </script>
 
     <!-- Flowbite -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <link href="./css/flowbite.min.css" rel="stylesheet" />
 
     <!-- Font Awesome -->
     <link
@@ -236,7 +233,8 @@
               >
                 <i class="fa-solid fa-bag-shopping"></i>
                 <div
-                  class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900"
+                  id="count_itemCart"
+                  class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900"
                 >
                   0
                 </div>
@@ -244,6 +242,7 @@
             </div>
             <div class="flex md:hidden gap-x-8 items-center justify-end">
               <a
+                id="count_itemCartPhone"
                 class="relative inline-flex items-center text-primary"
                 aria-current="page"
                 data-drawer-target="drawer-right-example"
@@ -252,7 +251,7 @@
               >
                 <i class="fa-solid fa-bag-shopping"></i>
                 <div
-                  class="absolute inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900"
+                  class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900"
                 >
                   0
                 </div>
@@ -1017,59 +1016,22 @@
           <a href="#" class="btnPhone-blue w-max h-max">View all</a>
         </div>
         <div class="product__content">
+          <form class="max-w-sm flex flex-row items-center gap-2 mb-8">
+            <label class="block font-body text-heading">Filter: </label>
+            <select
+              id="filter_product"
+              class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-md rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
+            >
+              <option value="all" selected>Choose a type</option>
+              <option value="iphone">Iphone</option>
+              <option value="samsung">Samsung</option>
+            </select>
+          </form>
           <div
+            id="product__append"
             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
           >
-            <div
-              class="grid-item w-full overflow-hidden bg-white rounded-2xl shadow-2xl shadow-gray-200 hover:shadow-gray-300 transition duration-400 ease-in-out"
-            >
-              <a href="#" class="block aspect-square overflow-hidden p-6">
-                <img
-                  src="./img/product1.png"
-                  class="object-cover transition duration-700 ease-in-out hover:scale-105"
-                />
-              </a>
-              <div class="function__product-item px-8">
-                <ul class="flex justify-center gap-3">
-                  <li>
-                    <a
-                      class="cart__item w-16 h-16 text-center block leading-[4.2rem] rounded-full bg-[#ddd]"
-                      ><i class="fa-solid fa-cart-arrow-down"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a
-                      class="cart__item w-16 h-16 text-center block leading-[4.2rem] rounded-full bg-[#ddd]"
-                      ><i class="fa-solid fa-heart"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a
-                      class="cart__item w-16 h-16 text-center block leading-[4.2rem] rounded-full bg-[#ddd]"
-                      data-modal-target="quickview-modal"
-                      data-modal-toggle="quickview-modal"
-                      ><i class="fa-solid fa-eye"></i
-                    ></a>
-                  </li>
-                </ul>
-              </div>
-              <div class="product__content-item px-8 py-8 text-center">
-                <h5
-                  class="sub__title-product text-gray-600 font-medium uppercase mb-2"
-                >
-                  Type product
-                </h5>
-                <a href="#" class="title__product"
-                  ><h4 class="text-3xl font-black mb-4">Product 1</h4></a
-                >
-                <p class="description__item mb-4 text-gray-500">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-                <div class="price__item text-2xl text-gray-600 font-bold">
-                  $100
-                </div>
-              </div>
-            </div>
+            <div id="nnt__loader" class="mx-auto block"></div>
           </div>
         </div>
       </div>
@@ -1411,7 +1373,7 @@
       </div>
     </div>
 
-    <!-- drawer component -->
+    <!-- Cart drawer component -->
     <div
       id="drawer-right-example"
       class="fixed top-0 right-0 z-40 w-full h-screen transition-transform transition duration-700 translate-x-full bg-white md:w-[500px] dark:bg-gray-800"
@@ -1454,141 +1416,19 @@
         </div>
 
         <div
-          class="product-cart flex-1 w-full h-auto flex flex-col gap-3 mb-6 px-6"
+          id="product__cartContent"
+          class="flex-1 w-full h-auto flex flex-col gap-3 mb-6 px-6"
         >
-          <div
-            class="item-product relative flex flex-col items-center bg-neutral-primary-soft p-6 border border-default rounded-base shadow-xs md:flex-row md:max-w-xl md:flex-row md:max-w-xl"
-          >
-            <a href="#"
-              ><img
-                class="object-cover w-full rounded-base h-48 md:h-auto md:w-48 mb-4 md:mb-0"
-                src="./img/product1.png"
-                alt=""
-            /></a>
-
-            <div class="flex flex-col justify-between md:p-4 leading-normal">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">
-                Product 1
-              </h5>
-              <p class="price font-bold text-[#0052a3] text-xl mb-6 text-body">
-                $100
-              </p>
-              <div>
-                <form class="max-w-xs mx-auto">
-                  <div
-                    class="relative flex items-center max-w-[9rem] shadow-xs rounded-base"
-                  >
-                    <button
-                      type="button"
-                      id="decrement-button"
-                      data-input-counter-decrement="quantity-input"
-                      class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-s-base text-sm px-3 focus:outline-none h-10"
-                    >
-                      <svg
-                        class="w-4 h-4 text-heading"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M5 12h14"
-                        />
-                      </svg>
-                    </button>
-                    <input
-                      type="text"
-                      id="quantity-input"
-                      data-input-counter
-                      aria-describedby="helper-text-explanation"
-                      class="border-x-0 h-10 placeholder:text-heading text-center w-full bg-neutral-secondary-medium border-default-medium py-2.5 placeholder:text-body"
-                      placeholder="0"
-                      required
-                    />
-                    <button
-                      type="button"
-                      id="increment-button"
-                      data-input-counter-increment="quantity-input"
-                      class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-e-base text-sm px-3 focus:outline-none h-10"
-                    >
-                      <svg
-                        class="w-4 h-4 text-heading"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M5 12h14m-7 7V5"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <button
-              type="button"
-              class="ms-auto flex items-center justify-center text-body hover:text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded text-sm h-8 w-8 focus:outline-none"
-              aria-label="Remove"
-            >
-              <span class="sr-only">Remove</span>
-              <svg
-                class="w-5 h-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18 17.94 6M18 18 6.06 6"
-                />
-              </svg>
-            </button>
-          </div>
+          Chưa có sản phẩm nào trong giỏ hàng
         </div>
         <div
+          style="display: none"
+          id="product__cartBottom"
           class="sticky bottom-0 left-0 w-full flex flex-col gap-3 p-4 bg-[#fff]"
         >
           <div class="relative overflow-x-auto">
             <table class="w-full text-body text-left rtl:text-right text-body">
               <tbody>
-                <tr class="bg-neutral-primary">
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-medium text-heading whitespace-nowrap"
-                  >
-                    Subtotal
-                  </th>
-                  <td class="px-6 py-4">$0</td>
-                </tr>
-                <tr class="bg-neutral-primary">
-                  <th
-                    scope="row"
-                    class="px-6 py-4 font-medium text-heading whitespace-nowrap"
-                  >
-                    Shipping (estimated)
-                  </th>
-                  <td class="px-6 py-4">$0</td>
-                </tr>
                 <tr class="bg-neutral-primary">
                   <th
                     scope="row"
@@ -1602,15 +1442,26 @@
               <tfoot>
                 <tr class="font-semibold text-heading">
                   <th scope="row" class="px-6 py-3 text-xl font-bold">Total</th>
-                  <td class="px-6 py-3 text-xl font-bold">$0</td>
+                  <td
+                    id="txt__totalPriceItem"
+                    class="px-6 py-3 text-xl font-bold"
+                  >
+                    $0
+                  </td>
                 </tr>
               </tfoot>
             </table>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
-            <a href="#" class="btnPhone-blue">View Cart</a>
-            <a href="#" class="btnPhone-white">Checkout </a>
+            <button
+              class="btnPhone-red"
+              data-modal-target="popup-modal-clear-item"
+              data-modal-toggle="popup-modal-clear-item"
+            >
+              Clear Cart
+            </button>
+            <button class="btnPhone-white">Checkout</button>
           </div>
         </div>
       </div>
@@ -1658,11 +1509,13 @@
             <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
               <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
                 <img
+                  id="thumnail_1"
                   class="w-full dark:hidden"
                   src="./img/product1.png"
                   alt=""
                 />
                 <img
+                  id="thumnail_2"
                   class="w-full hidden dark:block"
                   src="./img/product1.png"
                   alt=""
@@ -1670,13 +1523,20 @@
               </div>
 
               <div class="mt-6 sm:mt-8 lg:mt-0">
-                <h1
-                  class="text-2xl font-semibold text-gray-900 sm:text-5xl dark:text-white"
+                <span
+                  id="modal_type"
+                  class="bg-blue-100 text-blue-800 text-md font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300"
+                  >Phone</span
+                >
+                <h3
+                  id="modal_name"
+                  class="mt-4 text-2xl font-semibold text-gray-900 sm:text-5xl dark:text-white"
                 >
                   Product 1
-                </h1>
+                </h3>
                 <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
                   <p
+                    id="modal_price"
                     class="text-xl font-extrabold text-gray-900 sm:text-3xl dark:text-white"
                   >
                     $1,249.99
@@ -1709,47 +1569,137 @@
                     </svg>
                     Add to favorites
                   </a>
-
-                  <a
-                    href="#"
-                    title=""
-                    class="text-white mt-4 sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center"
-                    role="button"
-                  >
-                    <svg
-                      class="w-5 h-5 -ms-2 me-2"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"
-                      />
-                    </svg>
-
-                    Add to cart
-                  </a>
+                  <div id="btn__addToCartModal"></div>
                 </div>
 
                 <hr class="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
 
-                <p class="mb-6 text-gray-500 dark:text-gray-400">
+                <p
+                  id="modal_desc"
+                  class="mb-6 text-gray-500 dark:text-gray-400"
+                >
                   Studio quality three mic array for crystal clear calls and
                   voice recordings. Six-speaker sound system for a remarkably
                   robust and high-quality audio experience. Up to 256GB of
                   ultrafast SSD storage.
                 </p>
+
+                <hr class="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
+
+                <div class="font-bold mb-4">Attribute:</div>
+                <div
+                  class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default"
+                >
+                  <table
+                    class="w-full text-sm text-left rtl:text-right text-body"
+                  >
+                    <thead
+                      class="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium"
+                    >
+                      <tr>
+                        <th scope="col" class="px-6 py-3 font-medium">
+                          Screen
+                        </th>
+                        <th scope="col" class="px-6 py-3 font-medium">
+                          Back Camera
+                        </th>
+                        <th scope="col" class="px-6 py-3 font-medium">
+                          Front Camera
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr
+                        class="bg-neutral-primary-soft border-b border-default"
+                      >
+                        <td
+                          id="modal_screen"
+                          scope="row"
+                          class="px-6 py-4 font-medium text-heading whitespace-nowrap"
+                        >
+                          Apple MacBook Pro 17"
+                        </td>
+                        <td id="modal_backCamera" class="px-6 py-4">Silver</td>
+                        <td id="modal_frontCamera" class="px-6 py-4">Laptop</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </section>
+      </div>
+    </div>
+
+    <!-- Modal Clear all item in cart -->
+    <div
+      id="popup-modal-clear-item"
+      tabindex="-1"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    >
+      <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+          <button
+            type="button"
+            class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+            data-modal-hide="popup-modal-clear-item"
+          >
+            <svg
+              class="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+          <div class="p-4 md:p-5 text-center">
+            <svg
+              class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+            <h3
+              class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400"
+            >
+              Are you clear all items this?
+            </h3>
+            <button
+              data-modal-hide="popup-modal-clear-item"
+              id="btn__clearCart"
+              type="button"
+              class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
+            >
+              Yes
+            </button>
+            <button
+              data-modal-hide="popup-modal-clear-item"
+              type="button"
+              class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            >
+              No
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1761,7 +1711,7 @@
     ></script>
 
     <!-- Flowbite -->
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="./js/flowbite.min.js"></script>
 
     <!-- Axios -->
     <script
@@ -1775,6 +1725,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="./js/carousel.js"></script>
 
-    <script src="./src/main.js"></script>
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>

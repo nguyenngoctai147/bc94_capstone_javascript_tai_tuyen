@@ -16,6 +16,10 @@ $color-blue-2: #0052a3;
 $color-blue-3: #e3f2fd;
 $color-blue-4: #2196f3;
 
+//red color
+$color-red-1: #cc001b;
+$color-red-2: #a10c20;
+
 //yellow color
 $color-yellow-1: #ffc107;
 
@@ -62,20 +66,17 @@ $bd-2: 30px;
 $bd-rounded: 50%;
 
 //Breakpoints
-$breakpoints: (
-  "small-down": 576px,
+$breakpoints: ("small-down": 576px,
   "medium-down": 768px,
-  "large-down": 1024px
-);
+  "large-down": 1024px);
 
 //break points
-$breakpoints: (
-    "extra-large": 1200px,
-    "large": 992px,
-    "medium": 768px,
-    "small": 576px,
-    "extra-large-down": 1199.98px,
-    "large-down": 991.98px,
-    "medium-down": 767.98px,
-    "small-down": 575.98px,
+$breakpoints: ("extra-large": 1200px,
+  "large": 992px,
+  "medium": 768px,
+  "small": 576px,
+  "extra-large-down": 1199.98px,
+  "large-down": 991.98px,
+  "medium-down": 767.98px,
+  "small-down": 575.98px,
 );

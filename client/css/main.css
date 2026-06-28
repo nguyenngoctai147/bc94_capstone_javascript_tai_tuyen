@@ -100,6 +100,22 @@ html, body {
   opacity: 0.75;
 }
 
+.btnPhone-red {
+  background: linear-gradient(120deg, #cc001b, #a10c20);
+  padding: 15.5px 46px;
+  border: none;
+  border-radius: 30px;
+  letter-spacing: 0.03rem;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.5s;
+}
+.btnPhone-red:hover {
+  opacity: 0.75;
+}
+
 .btnPhone-shadow {
   background: #f5f9fe;
   padding: 8px 20px;
@@ -150,6 +166,34 @@ html, body {
   color: #ffc107;
 }
 
+#nnt__loader {
+  border: 8px solid #fff;
+  border-radius: 50%;
+  border-top: 8px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes marquee-x {
   from {
     transform: translateX(0);

@@ -5,7 +5,6 @@ var swiper = new Swiper(".nnt__category-carousel", {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-  mousewheel: true,
   keyboard: true,
   breakpoints: {
     320: {
