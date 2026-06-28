@@ -21,7 +21,9 @@
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#"
+          ><img src="./../assets/images/logo.svg"
+        /></a>
         <button
           class="navbar-toggler d-lg-none"
           type="button"
@@ -34,33 +36,18 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Home <span class="sr-only">(current)</span></a
+              <a class="nav-link" href="/"
+                >Homepage <span class="sr-only">(current)</span></a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="dropdownId"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >Dropdown</a
-              >
-              <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="#">Action 1</a>
-                <a class="dropdown-item" href="#">Action 2</a>
-              </div>
+              <a class="nav-link" href="/client/">Client</a>
             </li>
           </ul>
         </div>
       </nav>
 
-      <header class="display-4 my-4">Thực hành javascript - axios</header>
+      <header class="display-4 my-4">Quản trị sản phẩm - Vineta</header>
       <!-- Phan tab menu -->
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
@@ -114,12 +101,15 @@
           <div class="clear-fix"></div>
           <div class="tblSanPham" id="tblSanPham">
             <!-- BEGIN TABLE SẢN PHẨM -->
-            <table class="table table-bordered">
+            <table class="table table-bordered table-hover">
               <thead>
                 <th>STT</th>
+                <th>Thumbnail</th>
+                <th>Mã SP</th>
                 <th>Tên Sản Phẩm</th>
+                <th>Loại</th>
                 <th>Giá</th>
-                <th>Hình Ảnh</th>
+                <th>Màn hình</th>
                 <th>Mô Tả</th>
                 <th>Action</th>
               </thead>
@@ -148,32 +138,153 @@
             <!-- Modal body -->
             <div class="modal-body">
               <div class="form-group">
+                <label>Mã sản phẩm</label>
+                <input
+                  id="txt_id"
+                  class="form-control"
+                  placeholder="Nhập vào mã sản phẩm"
+                />
+                <div
+                  id="txt_infoID"
+                  class="alert alert-danger"
+                  role="alert"
+                  style="margin: 5px 0; display: none"
+                >
+                  A simple danger alert—check it out!
+                </div>
+              </div>
+              <div class="form-group">
                 <label>Tên Sản Phẩm</label>
                 <input
-                  id="TenSP"
+                  id="txt_name"
                   class="form-control"
                   placeholder="Nhập vào tên sản phẩm"
                 />
+                <div
+                  id="txt_infoName"
+                  class="alert alert-danger"
+                  role="alert"
+                  style="margin: 5px 0; display: none"
+                >
+                  A simple danger alert—check it out!
+                </div>
               </div>
               <div class="form-group">
-                <label>Giá</label>
+                <label>Giá tiền</label>
                 <input
-                  id="GiaSP"
+                  id="txt_price"
                   class="form-control"
                   placeholder="Nhập vào giá"
                 />
+                <div
+                  id="txt_infoPrice"
+                  class="alert alert-danger"
+                  role="alert"
+                  style="margin: 5px 0; display: none"
+                >
+                  A simple danger alert—check it out!
+                </div>
               </div>
               <div class="form-group">
-                <label>Hình Ảnh</label>
+                <label>Màn hình</label>
                 <input
-                  id="HinhSP"
+                  id="txt_screen"
                   class="form-control"
-                  placeholder="Nhập vào hình sản phẩm"
+                  placeholder="Nhập vào màn hình"
                 />
+                <div
+                  id="txt_infoScreen"
+                  class="alert alert-danger"
+                  role="alert"
+                  style="margin: 5px 0; display: none"
+                >
+                  A simple danger alert—check it out!
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Camera sau</label>
+                <input
+                  id="txt_backCamera"
+                  class="form-control"
+                  placeholder="Nhập vào Back Camera"
+                />
+                <div
+                  id="txt_infoBackCamera"
+                  class="alert alert-danger"
+                  role="alert"
+                  style="margin: 5px 0; display: none"
+                >
+                  A simple danger alert—check it out!
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Camera trước</label>
+                <input
+                  id="txt_frontCamera"
+                  class="form-control"
+                  placeholder="Nhập vào Front Camera"
+                />
+                <div
+                  id="txt_infoFrontCamera"
+                  class="alert alert-danger"
+                  role="alert"
+                  style="margin: 5px 0; display: none"
+                >
+                  A simple danger alert—check it out!
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Hình Ảnh </label>
+                <div
+                  id="img_thumbnail"
+                  style="
+                    display: inline-block;
+                    margin-bottom: 5px;
+                    border: 1px solid #ddd;
+                    padding: 5px;
+                  "
+                ></div>
+                <input
+                  id="txt_img"
+                  class="form-control"
+                  placeholder="Chèn link hình sản phẩm"
+                />
+                <div
+                  id="txt_infoIMG"
+                  class="alert alert-danger"
+                  role="alert"
+                  style="margin: 5px 0; display: none"
+                >
+                  A simple danger alert—check it out!
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Hãng máy</label>
+                <select id="sel_type" name="type" class="form-control">
+                  <option value="">Chọn hãng điện thoại</option>
+                  <option value="iphone">Iphone</option>
+                  <option value="samsung">Samsung</option>
+                </select>
+                <div
+                  id="txt_infoType"
+                  class="alert alert-danger"
+                  role="alert"
+                  style="margin: 5px 0; display: none"
+                >
+                  A simple danger alert—check it out!
+                </div>
               </div>
               <div class="form-group">
                 <label for="">Mô tả: </label>
-                <textarea id="MoTa" name="" class="form-control"></textarea>
+                <textarea id="txt_desc" class="form-control"></textarea>
+                <div
+                  id="txt_infoDesc"
+                  class="alert alert-danger"
+                  role="alert"
+                  style="margin: 5px 0; display: none"
+                >
+                  A simple danger alert—check it out!
+                </div>
               </div>
             </div>
             <!-- Modal footer -->
@@ -186,8 +297,7 @@
     <style>
       #container {
         min-width: 310px;
-        max-width: 800px;
-        height: 400px;
+        max-width: 1200px;
         margin: 0 auto;
       }
     </style>
