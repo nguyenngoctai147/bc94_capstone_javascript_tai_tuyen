@@ -1,15 +1,13 @@
 {
-  "routes": [
+  "cleanUrls": true,
+  "rewrites": [
     {
-      "src": "^/client$",
-      "dest": "/client/index.html"
+      "source": "/client",
+      "destination": "/client/index.html"
     },
     {
-      "src": "^/admin$",
-      "dest": "/admin/app/views/index.html"
-    },
-    {
-      "handle": "filesystem"
+      "source": "/admin",
+      "destination": "/admin/views/index.html"
     }
   ]
 }
