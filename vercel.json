@@ -1,4 +1,15 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": false
+  "routes": [
+    {
+      "src": "^/client$",
+      "dest": "/client/index.html"
+    },
+    {
+      "src": "^/admin$",
+      "dest": "/admin/app/views/index.html"
+    },
+    {
+      "handle": "filesystem"
+    }
+  ]
 }
