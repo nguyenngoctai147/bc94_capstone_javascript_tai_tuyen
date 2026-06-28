@@ -5,6 +5,10 @@
       "destination": "/admin/app/views/index.html"
     },
     {
+      "source": "/admin/(.*\\..*)",
+      "destination": "/admin/app/views/$1"
+    },
+    {
       "source": "/client/((?!.*\\.).*)",
       "destination": "/client/index.html"
     },
