@@ -1,13 +1,16 @@
 {
-  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/client",
+      "source": "/admin/app/views/((?!.*\\.).*)",
+      "destination": "/admin/app/views/index.html"
+    },
+    {
+      "source": "/client/((?!.*\\.).*)",
       "destination": "/client/index.html"
     },
     {
-      "source": "/admin",
-      "destination": "/admin/views/index.html"
+      "source": "/((?!admin/app/views|client|.*\\.).*)",
+      "destination": "/index.html"
     }
   ]
 }
