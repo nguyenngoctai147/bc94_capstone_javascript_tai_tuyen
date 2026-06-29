@@ -28,6 +28,45 @@ class Validation {
     document.getElementById(eID).style.display = "none";
     return true;
   }
+
+  checkCharacterField(value, eID, message) {
+    const letter =
+      /^[0-9a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚÝĂĐĨŨƠƯàáâãèéêìíòóôõùúýăđĩũơưẠ-ỹ\s]+$/u;
+    if (letter.test(value)) {
+      document.getElementById(eID).innerHTML = "";
+      document.getElementById(eID).style.display = "none";
+      return true;
+    }
+    document.getElementById(eID).innerHTML = message;
+    document.getElementById(eID).style.display = "block";
+    return false;
+  }
+
+  checkPrice(value, eID, message) {
+    if (value > 0) {
+      document.getElementById(eID).innerHTML = "";
+      document.getElementById(eID).style.display = "none";
+      return true;
+    }
+    document.getElementById(eID).innerHTML = message;
+    document.getElementById(eID).style.display = "block";
+    return false;
+  }
+
+  checkSelectOption(selectElement, eID, message) {
+    const selectedValue =
+      typeof selectElement === "string" ? selectElement : selectElement?.value;
+
+    if (selectedValue && selectedValue !== "") {
+      document.getElementById(eID).innerHTML = "";
+      document.getElementById(eID).style.display = "none";
+      return true;
+    }
+
+    document.getElementById(eID).innerHTML = message;
+    document.getElementById(eID).style.display = "block";
+    return false;
+  }
 }
 
 export default Validation;
