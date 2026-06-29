@@ -255,11 +255,11 @@ html, body {
   cursor: pointer;
 }
 
-.function__product-item ul li a {
+.function__product-item ul li button {
   transition: all 0.4s;
   cursor: pointer;
 }
-.function__product-item ul li a:hover {
+.function__product-item ul li button:hover {
   background-color: #0066cc;
   color: #fff;
 }

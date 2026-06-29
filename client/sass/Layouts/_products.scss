@@ -14,17 +14,18 @@
 }
 
 .function__product-item {
-	ul {
-		li {
-			a {
-				transition: all 0.4s;
-				cursor: pointer;
-				&:hover {
-					background-color: $color-blue-1;
+    ul {
+        li {
+            button {
+                transition: all 0.4s;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $color-blue-1;
                     color: $color-white-3;
-				}
-			}
-		}
+                }
+            }
+        }
     }
 }
 
