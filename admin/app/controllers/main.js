@@ -28,16 +28,63 @@ function getInputProduct(isInput) {
   if (isInput) {
     isValid &=
       validation.checkEmptyField(
-        txt_id,
-        "txt_infoID",
-        "Vui lòng không bỏ trống mã SP!",
+        txt_name,
+        "txt_infoName",
+        "Tên sản phẩm không được bỏ trống",
       ) &&
-      validation.checkIsExist(
-        txt_id,
-        "txt_infoID",
-        "Mã sản phẩm đã tồn tại",
-        arrData,
+      validation.checkCharacterField(
+        txt_name,
+        "txt_infoName",
+        "Tên sản phẩm phải là ký tự chữ cái",
       );
+
+    isValid &=
+      validation.checkEmptyField(
+        txt_price,
+        "txt_infoPrice",
+        "Giá tiền không được bỏ trống",
+      ) &&
+      validation.checkPrice(
+        txt_price,
+        "txt_infoPrice",
+        "Giá tiền không được nhỏ hơn 0",
+      );
+
+    isValid = validation.checkEmptyField(
+      txt_screen,
+      "txt_infoScreen",
+      "Vui lòng nhập thông tin màn hình",
+    );
+
+    isValid = validation.checkEmptyField(
+      txt_backCamera,
+      "txt_infoBackCamera",
+      "Vui lòng nhập thông tin Camera sau",
+    );
+
+    isValid = validation.checkEmptyField(
+      txt_frontCamera,
+      "txt_infoFrontCamera",
+      "Vui lòng nhập thông tin Camera trước",
+    );
+
+    isValid = validation.checkEmptyField(
+      txt_img,
+      "txt_infoIMG",
+      "Vui lòng nhập đường dẫn hình ảnh",
+    );
+
+    isValid = validation.checkSelectOption(
+      getID("sel_type"),
+      "txt_infoType",
+      "Vui lòng chọn hãng máy",
+    );
+
+    isValid = validation.checkEmptyField(
+      txt_desc,
+      "txt_infoDesc",
+      "Vui lòng nhập mô tả sản phẩm",
+    );
   }
 
   if (!isValid) return;
@@ -70,8 +117,7 @@ function renderListProduct() {
     });
 }
 renderListProduct();
-setInterval(renderListProduct, 5000);
-console.log(arrData);
+// setInterval(renderListProduct, 3000);
 
 function renderUI(data) {
   let content = "";
@@ -111,7 +157,6 @@ function resetInput() {
 }
 
 function disableAlert() {
-  getID("txt_infoID").style.display = "none";
   getID("txt_infoName").style.display = "none";
   getID("txt_infoPrice").style.display = "none";
   getID("txt_infoScreen").style.display = "none";
@@ -128,7 +173,6 @@ getID("btnThemSP").onclick = function () {
     "Thêm sản phẩm - Vineta";
   const btnAdd = `<button class="btn btn-primary" onclick="handleAdd();">OK</button>`;
   document.getElementsByClassName("modal-footer")[0].innerHTML = btnAdd;
-  getID("txt_id").disabled = false;
   getID("img_thumbnail").style.display = "none";
   resetInput();
   disableAlert();
@@ -137,17 +181,13 @@ getID("btnThemSP").onclick = function () {
 // Tạo phần thêm sản phẩm
 function handleAdd() {
   const product = getInputProduct(true);
-
   if (!product) return;
-
   const promise = service.addProduct(product);
-
   promise
     .then(function (result) {
       const data = result.data;
-      console.log(data);
       renderListProduct();
-      // document.getElementsByClassName("close")[0].click();
+      document.getElementsByClassName("close")[0].click();
     })
     .catch(function (error) {
       console.log(error);
@@ -161,7 +201,6 @@ function handleDelete(id) {
   promise
     .then(function (result) {
       const data = result.data;
-      renderUI(data);
       renderListProduct();
     })
     .catch(function (error) {
@@ -183,8 +222,6 @@ function handleModalEdit(id) {
   promise
     .then(function (result) {
       const data = result.data;
-
-      getID("txt_id").disabled = true;
       getID("txt_id").value = data.id;
       getID("txt_name").value = data.name;
       getID("txt_price").value = data.price;
@@ -205,12 +242,12 @@ window.handleModalEdit = handleModalEdit;
 
 // Xử lý cập nhập sản phẩm
 function handleEdit() {
-  const product = getInputProduct();
+  const product = getInputProduct(true);
+  if (!product) return;
   const promise = service.editProduct(product);
   promise
     .then(function (result) {
       const data = result.data;
-      renderUI(data);
       renderListProduct();
       document.getElementsByClassName("close")[0].click();
     })
@@ -219,3 +256,17 @@ function handleEdit() {
     });
 }
 window.handleEdit = handleEdit;
+
+const btn_search = getID("btn_search");
+btn_search.onclick = function () {
+  const txt_search = getID("txt_search").value;
+  const arrFilter = productManage.filterNameProduct(txt_search, arrData);
+  renderUI(arrFilter);
+};
+
+const sel_sort = getID("sel_sort");
+sel_sort.addEventListener("change", function () {
+  const selectedItem = parseInt(this.options[this.selectedIndex].value, 10);
+  const arrSort = productManage.sortItem(selectedItem, arrData);
+  renderUI(arrSort);
+});
