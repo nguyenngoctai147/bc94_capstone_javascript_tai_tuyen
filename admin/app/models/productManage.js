@@ -4,13 +4,15 @@ class ProductManage {
   }
 
   filterNameProduct(input, data) {
-    if (input === "") {
+    const searchText = input?.trim().toLowerCase();
+    if (!searchText) {
       return data;
     }
-    let arrFilter = [];
+    const arrFilter = [];
     for (let i = 0; i < data.length; i++) {
       const product = data[i];
-      if (product.name === input) {
+      const productName = product.name?.toLowerCase();
+      if (productName && productName.includes(searchText)) {
         arrFilter.push(product);
       }
     }
