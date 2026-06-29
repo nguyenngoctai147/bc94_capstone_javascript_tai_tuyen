@@ -48,10 +48,10 @@ function renderUI(data) {
                     ></button>
                   </li>
                   <li>
-                    <a
+                    <button
                       class="cart__item w-16 h-16 text-center block leading-[4.2rem] rounded-full bg-[#ddd]"
                       ><i class="fa-solid fa-heart"></i
-                    ></a>
+                    ></button>
                   </li>
                   <li>
                     <button
@@ -85,6 +85,11 @@ function renderUI(data) {
   }
 
   document.getElementById("product__append").innerHTML = content;
+
+  // Re-initialize Flowbite modal triggers after rendering dynamic content
+  if (window.initModals) {
+    window.initModals();
+  }
 }
 
 function renderUICart(data = []) {
